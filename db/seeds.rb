@@ -13,19 +13,19 @@ puts 'Cleaning database...'
 Restaurant.destroy_all
 
 puts 'Creating restaurants...'
-asiat = { name: 'Pierre Sang', address: '55 Rue Oberkampf, 75011 Paris', category: 'Chinese',
+asiat = { name: 'Pierre Sang', address: '55 Rue Oberkampf, 75011 Paris', category: 'chinese',
           phone_number: Faker::PhoneNumber.cell_phone }
-pizza = { name: 'Chez Justine', address: '96 Rue Oberkampf, 75011 Paris', category: 'Italian',
+pizza = { name: 'Chez Justine', address: '96 Rue Oberkampf, 75011 Paris', category: 'italian',
           phone_number: Faker::PhoneNumber.cell_phone }
-sushi = { name: 'Nakagawa', address: '142 Rue Oberkampf, 75011 Paris', category: 'Japanese',
+sushi = { name: 'Nakagawa', address: '142 Rue Oberkampf, 75011 Paris', category: 'japanese',
           phone_number: Faker::PhoneNumber.cell_phone }
-burgers = { name: 'Le Camion Qui Fume', address: '66 Rue Oberkampf, 75011 Paris', category: 'French',
+burgers = { name: 'Le Camion Qui Fume', address: '66 Rue Oberkampf, 75011 Paris', category: 'french',
             phone_number: Faker::PhoneNumber.cell_phone }
-pny = { name: 'PNY', address: '96 Rue Oberkampf, 75011 Paris', category: 'Belgian',
+pny = { name: 'PNY', address: '96 Rue Oberkampf, 75011 Paris', category: 'belgian',
         phone_number: Faker::PhoneNumber.cell_phone }
 
 [asiat, pizza, sushi, burgers, pny].each do |attributes|
   restaurant = Restaurant.create!(attributes)
-  puts "Created #{restaurant.name} - #{restaurant.address} - #{restaurant.category} - #{restaurant.phone_number}"
+  puts "Created #{restaurant.name} - #{restaurant.address} - #{restaurant.category.capitalize} - #{restaurant.phone_number}"
 end
 puts 'Finished!'
