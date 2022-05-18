@@ -1,6 +1,10 @@
 <div class="d-flex justify-content-between">
   <h2><%= @restaurant.name %></h2>
-  <p><%= link_to "✚ Add new review", new_restaurant_review_path(@restaurant), class:"btn btn-primary text-decoration-none"%></p>
+  <p>
+    <%= link_to restaurants_path, class:"btn btn-primary text-decoration-none" do %>
+      <i class='fa-solid fa-clock-rotate-left'></i> Return to all restaurants
+    <% end %>
+  </p>
 </div>
 
 <div class="alert alert-dark text-dark">
@@ -13,14 +17,31 @@
   <p><strong>Reviews</strong></p>
   <ul class="list-group-item list-unstyled">
     <% @restaurant.reviews.each do |review| %>
-      <li><strong>Content :</strong> <%= review.content %></li>
-      <li><strong>Rating : <%= review.rating %> </strong><i class="fa-solid fa-star"></i></li>
+      <div class="border-bottom border-1">
+        <small>
+          <li><strong>Content :</strong> <%= review.content %></li>
+          <li>
+              <strong>Rating :</strong>
+              <% count = 0 %>
+              <% 5.times do %>
+                <% if review.rating > count %>
+                  <i class="fa-solid fa-star"></i>
+                <% else %>
+                  <i class="fa-regular fa-star"></i>
+                <% end %>
+                <% count += 1 %>
+              <% end %>
+          </li>
+        </small>
+      </div>
     <% end %>
   </ul>
 </div>
 
-<p>
-  <%= link_to restaurants_path, class:"btn btn-primary text-decoration-none" do %>
-    <i class='fa-solid fa-clock-rotate-left'></i> Return to all restaurants
+<div class="alert alert-dark text-dark">
+  <%= simple_form_for [@restaurant, @review] do |f| %>
+    <%= f.input :content, placeholder: 'Some content'%>
+    <%= f.input :rating, collection: 0..5, prompt: 'Select a rating' %>
+    <%= f.submit class: 'btn btn-primary' %>
   <% end %>
-</p>
+</div>
