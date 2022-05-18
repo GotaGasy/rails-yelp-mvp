@@ -1,0 +1,21 @@
+<div class="d-flex justify-content-between">
+  <h2>Create a new restaurant</h2>
+  <p>
+  <%= link_to restaurants_path, class:"btn btn-primary text-decoration-none" do %>
+    <i class='fa-solid fa-clock-rotate-left'></i> Return to all restaurants
+  <% end %>
+</p>
+</div>
+
+<div >
+  <%= simple_form_for @restaurant do |f| %>
+    <%= f.input :name, placeholder: 'Mcdonald\'s' %>
+    <%= f.input :address, placeholder: '5 Rue Oberkampf, 75011 Paris' %>
+    <%= f.input :category, label: 'Category', prompt: 'Select a category',
+                :collection => %w[Chinese Italian Japanese French Belgian] %>
+    <%= f.input :phone_number %>
+    <%= f.button :submit, class: 'btn btn-primary' %>
+  <% end %>
+</div>
+
+<%# input_html: { class: 'special' } %>

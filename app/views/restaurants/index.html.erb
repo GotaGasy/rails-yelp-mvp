@@ -1,0 +1,14 @@
+<h2>Restaurants</h2>
+
+<ol class="list-unstyled my-3 alert alert-secondary">
+  <% @restaurants.each do |r| %>
+    <li>
+      <strong>
+        <%= link_to restaurant_path(r), class: "text-decoration-none" do %>
+          <%= r.id %> - <%= r.name %>
+        <% end %>
+      </strong>
+  <% end %>
+</ol>
+
+<p><%= link_to "✚ Create a new restaurant", new_restaurant_path, class: "btn btn-primary text-decoration-none" %></p>

@@ -1,0 +1,17 @@
+<div class="d-flex justify-content-between">
+  <h2>New Review for <%= @restaurant.name %></h2>
+  <p>
+  <%= link_to restaurant_path(@restaurant), class:"btn btn-primary text-decoration-none" do %>
+    <i class='fa-solid fa-clock-rotate-left'></i> Return to this restaurant
+  <% end %>
+</p>
+</div>
+
+<div class="">
+  <%= simple_form_for [@restaurant, @review] do |f| %>
+    <%= f.input :content %>
+    <%= f.input :rating, label: 'Rating', prompt: 'Select a rating',
+                collection: %w[0 1 2 3 4 5] %>
+    <%= f.submit "Submit review", class: "btn btn-primary" %>
+  <% end %>
+</div>
